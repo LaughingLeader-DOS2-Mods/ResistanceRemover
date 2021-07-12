@@ -1,0 +1,122 @@
+# SourceControlGenerator #
+##########################
+SourceControlGenerator.json
+
+# Levels
+######################
+Mods/ResistancesRemoved_fac8042a-bf84-4a8a-9ccd-433a0305a861/Levels/*
+Mods/ResistancesRemoved_fac8042a-bf84-4a8a-9ccd-433a0305a861/Globals/*
+Editor/Mods/ResistancesRemoved_fac8042a-bf84-4a8a-9ccd-433a0305a861/Levels/*
+
+# Story files        #
+######################
+*.div
+!story_header.div
+*.raw
+story_orphanqueries_ignore.txt
+Mods/ResistancesRemoved_fac8042a-bf84-4a8a-9ccd-433a0305a861/Story/Dialogs/Autosave/*
+Mods/ResistancesRemoved_fac8042a-bf84-4a8a-9ccd-433a0305a861/Story/Dialogs/Recovered/*
+
+# Asset Folders      #
+######################
+Public/ResistancesRemoved_fac8042a-bf84-4a8a-9ccd-433a0305a861/Assets/*
+#Public/ResistancesRemoved_fac8042a-bf84-4a8a-9ccd-433a0305a861/GUI/*
+
+# Editor files       #
+######################
+RootTemplateSelectorConfig_*
+ResourceSelectorConfig_*
+StatsEditorConfig.xml
+EffectEditorConfig.xml
+DockPanel.config
+EditorBrowserMetadata_*
+EditorBrowserMetadata.xml
+Autosave/*
+Recovered/*
+ReConHistory.txt
+story.debugInfo
+
+# Assets             #
+######################
+*.gr2
+*.dae
+*.swf
+*.bullet
+*.dds
+*.tga
+*.png
+*.ttf
+*.lsb
+*.lsf
+*.lsfx
+*.lsefx
+#*.lsx
+*.lsmg
+*.wem
+
+# Logs               #
+######################
+*.log
+*.ailog
+log.txt
+errors.txt
+dialoglog.txt
+personallog.txt
+
+# Binary Files       #
+######################
+*.dat
+*.data
+*.bik
+*.bnk
+*.bshd
+*.cur
+*.fnt
+*.iggy
+*.iggytex
+*.osi
+*.patch
+*.tmpl
+
+# Dump files         #
+######################
+*.stackdump
+*.dmp
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# VS Code #
+############
+launch.json
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.lnk
+
+
+

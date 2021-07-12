@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<save>
+    <header version="2" />
+    <version major="3" minor="6" revision="6" build="0" />
+    <region id="MetaData">
+        <node id="root">
+            <attribute id="Module" value="fac8042a-bf84-4a8a-9ccd-433a0305a861" type="23" />
+            <attribute id="Name" value="ResistancesRemoved" type="23" />
+            <attribute id="Type" value="Add-on" type="23" />
+            <attribute id="UUID" value="1ea1edfa-5ed0-4f48-a81f-1d5ec1a9fde5" type="23" />
+        </node>
+    </region>
+</save>
