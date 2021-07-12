@@ -9,15 +9,15 @@
                 <node id="ModuleInfo">
                     <attribute id="Author" value="LaughingLeader" type="30" />
                     <attribute id="CharacterCreationLevelName" value="" type="22" />
-                    <attribute id="Description" value="Removes elemental resistances and immunities." type="30" />
+                    <attribute id="Description" value="Removes positive resistances and immunities." type="30" />
                     <attribute id="DescriptionName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
                     <attribute id="DisplayName" value="" handle="ls::TranslatedStringRepository::s_HandleUnknown" type="28" />
-                    <attribute id="Folder" value="ResistancesRemoved_fac8042a-bf84-4a8a-9ccd-433a0305a861" type="30" />
+                    <attribute id="Folder" value="ResistanceRemover_fac8042a-bf84-4a8a-9ccd-433a0305a861" type="30" />
                     <attribute id="GMTemplate" value="" type="22" />
                     <attribute id="LobbyLevelName" value="" type="22" />
                     <attribute id="MD5" value="" type="23" />
                     <attribute id="MenuLevelName" value="" type="22" />
-                    <attribute id="Name" value="ResistancesRemoved" type="22" />
+                    <attribute id="Name" value="Resistance Remover" type="22" />
                     <attribute id="NumPlayers" value="2" type="1" />
                     <attribute id="PhotoBooth" value="" type="22" />
                     <attribute id="StartupLevelName" value="" type="22" />
