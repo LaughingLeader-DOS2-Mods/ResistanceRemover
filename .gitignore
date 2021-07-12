@@ -4,9 +4,9 @@ SourceControlGenerator.json
 
 # Levels
 ######################
-Mods/ResistancesRemoved_fac8042a-bf84-4a8a-9ccd-433a0305a861/Levels/*
-Mods/ResistancesRemoved_fac8042a-bf84-4a8a-9ccd-433a0305a861/Globals/*
-Editor/Mods/ResistancesRemoved_fac8042a-bf84-4a8a-9ccd-433a0305a861/Levels/*
+Mods/ResistanceRemover_fac8042a-bf84-4a8a-9ccd-433a0305a861/Levels/*
+Mods/ResistanceRemover_fac8042a-bf84-4a8a-9ccd-433a0305a861/Globals/*
+Editor/Mods/ResistanceRemover_fac8042a-bf84-4a8a-9ccd-433a0305a861/Levels/*
 
 # Story files        #
 ######################
@@ -14,13 +14,13 @@ Editor/Mods/ResistancesRemoved_fac8042a-bf84-4a8a-9ccd-433a0305a861/Levels/*
 !story_header.div
 *.raw
 story_orphanqueries_ignore.txt
-Mods/ResistancesRemoved_fac8042a-bf84-4a8a-9ccd-433a0305a861/Story/Dialogs/Autosave/*
-Mods/ResistancesRemoved_fac8042a-bf84-4a8a-9ccd-433a0305a861/Story/Dialogs/Recovered/*
+Mods/ResistanceRemover_fac8042a-bf84-4a8a-9ccd-433a0305a861/Story/Dialogs/Autosave/*
+Mods/ResistanceRemover_fac8042a-bf84-4a8a-9ccd-433a0305a861/Story/Dialogs/Recovered/*
 
 # Asset Folders      #
 ######################
-Public/ResistancesRemoved_fac8042a-bf84-4a8a-9ccd-433a0305a861/Assets/*
-#Public/ResistancesRemoved_fac8042a-bf84-4a8a-9ccd-433a0305a861/GUI/*
+Public/ResistanceRemover_fac8042a-bf84-4a8a-9ccd-433a0305a861/Assets/*
+#Public/ResistanceRemover_fac8042a-bf84-4a8a-9ccd-433a0305a861/GUI/*
 
 # Editor files       #
 ######################
