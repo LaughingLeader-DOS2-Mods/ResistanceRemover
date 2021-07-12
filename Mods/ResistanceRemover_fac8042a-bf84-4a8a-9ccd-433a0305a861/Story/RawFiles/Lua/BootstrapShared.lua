@@ -4,6 +4,9 @@ local StatsOverrider = {
 	Ignored = {
 		---Makes the victim immune to damage
 		Stats_PermaFrost = true,
+		--Lichdom
+		Stats_LLLICH_ChillForm = true,
+		Stats_LLLICH_LichForm = true,
 	},
 	--Stat attributes to check for > 0
 	Attributes = {
