@@ -34,11 +34,18 @@ local StatsOverrider = {
 	}
 }
 
+local function ShouldChangeValue(attribute, value)
+	if string.find(attribute, "Resistance", 1, true) then
+		return value > 0 and value <= 100
+	end
+	return false
+end
+
 function StatsOverrider:OverrideStat(id, statAttributes, syncStat)
 	local overwritten = false
 	for property,_ in pairs(statAttributes) do
 		local value = Ext.StatGetAttribute(id, property)
-		if type(value) == "number" and value > 0 then
+		if type(value) == "number" and ShouldChangeValue(property, value) then
 			if not syncStat then
 				Ext.StatSetAttribute(id, property, 0)
 			else
