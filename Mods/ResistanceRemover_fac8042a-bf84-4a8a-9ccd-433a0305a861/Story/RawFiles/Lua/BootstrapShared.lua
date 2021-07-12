@@ -17,6 +17,14 @@ local StatsOverrider = {
 			AirResistance = true,
 			PoisonResistance = true,
 			PhysicalResistance = true,
+		},
+		Character = {
+			FireResistance = true,
+			EarthResistance = true,
+			WaterResistance = true,
+			AirResistance = true,
+			PoisonResistance = true,
+			PhysicalResistance = true,
 		}
 	}
 }
@@ -39,23 +47,34 @@ function StatsOverrider:OverrideStat(id, statAttributes, syncStat)
 	return overwritten
 end
 
-function StatsOverrider:CanOverridePotion(id)
+function StatsOverrider:CanOverrideStat(id, statType)
 	if self.Ignored[id] then
 		return false
 	end
-	--Consumable items. May be a potion inheriting from _Story
-	if Ext.StatGetAttribute(id, "IsConsumable") == "Yes" or Ext.StatGetAttribute(id, "IsFood") == "Yes" or Ext.StatGetAttribute(id, "RootTemplate") ~= "" then
-		return false
+	if statType == "Potion" then
+		if string.find("Stats_Infusion", id) then
+			return false
+		end
+		--Consumable items. May be a potion inheriting from _Story
+		if Ext.StatGetAttribute(id, "IsConsumable") == "Yes" or Ext.StatGetAttribute(id, "IsFood") == "Yes" or Ext.StatGetAttribute(id, "RootTemplate") ~= "" then
+			return false
+		end
+	elseif statType == "Character" then
+		local parent = Ext.StatGetAttribute(id, "Using")
+		if parent == "_Ward" then
+			return false
+		end
 	end
 	return true
 end
 
----@param entries string[]
-function StatsOverrider:OverridePotions(entries, syncStat)
+---@param statType string
+---@param syncStat boolean|nil
+function StatsOverrider:OverrideStats(statType, syncStat)
 	local overwrites = {}
-	local statAttributes = self.Attributes.Potion
-	for _,id in pairs(entries) do
-		if self:CanOverridePotion(id) then
+	local statAttributes = self.Attributes[statType]
+	for _,id in pairs(Ext.GetStatEntries(statType)) do
+		if self:CanOverrideStat(id, statType) then
 			if self:OverrideStat(id, statAttributes, syncStat) then
 				overwrites[#overwrites+1] = id
 			end
@@ -63,27 +82,28 @@ function StatsOverrider:OverridePotions(entries, syncStat)
 	end
 	local count = #overwrites
 	if count > 0 then
-		Ext.Print(string.format("[%s:OverridePotions] Changed resistances in (%s) stats.", self.PrintID, count))
+		Ext.Print(string.format("[%s:OverrideStats%s] Changed resistances in (%s) stats.", self.PrintID, statType, count))
 		local b,err = xpcall(function()
 			table.sort(overwrites)
 			local str = ""
 			for i=1,count do
 				str = string.format("%s%s%s", str, overwrites[i], i < count and "\n" or "")
 			end
-			local fileName = string.format("Logs/ResistanceRemover_Overwrites_Potion_%s.txt", Ext.IsClient() and "Client" or "Server")
+			local fileName = string.format("Logs/ResistanceRemover_Overwrites_%s_%s.txt", statType, Ext.IsClient() and "Client" or "Server")
 			Ext.SaveFile(fileName, str)
-			Ext.Print(string.format("[%s:OverridePotions] Saved log to (%s).", self.PrintID, fileName))
+			Ext.Print(string.format("[%s:OverrideStats:%s] Saved log to (%s).", self.PrintID, statType, fileName))
 		end, debug.traceback)
 		if not b then
 			Ext.PrintError(err)
 		end
 	else
-		Ext.Print(string.format("[%s:OverridePotions] No stats needed changing (already parsed?).", self.PrintID, count))
+		Ext.Print(string.format("[%s:OverrideStats:%s] No stats needed changing (already parsed?).", self.PrintID, statType, count))
 	end
 end
 
 function StatsOverrider:Init(syncStat)
-	self:OverridePotions(Ext.GetStatEntries("Potion"), syncStat)
+	self:OverrideStats("Potion", syncStat)
+	self:OverrideStats("Character", syncStat)
 end
 
 Ext.RegisterListener("StatsLoaded", function() StatsOverrider:Init() end)
