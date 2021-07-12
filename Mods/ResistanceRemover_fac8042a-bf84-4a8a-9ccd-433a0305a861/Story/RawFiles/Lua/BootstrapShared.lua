@@ -7,6 +7,11 @@ local StatsOverrider = {
 		--Lichdom
 		Stats_LLLICH_ChillForm = true,
 		Stats_LLLICH_LichForm = true,
+		--Characters
+		-- FTJ_FireSlug_Boss = true,
+		-- FTJ_FireSlug_Grunt = true,
+		-- FTJ_Frog_Poison = true,
+		-- FTJ_Frog_Water = true,
 	},
 	--Stat attributes to check for > 0
 	Attributes = {
@@ -52,7 +57,7 @@ function StatsOverrider:CanOverrideStat(id, statType)
 		return false
 	end
 	if statType == "Potion" then
-		if string.find("Stats_Infusion", id) then
+		if string.find(id, "Stats_Infusion", 1, true) then
 			return false
 		end
 		--Consumable items. May be a potion inheriting from _Story
@@ -62,6 +67,11 @@ function StatsOverrider:CanOverrideStat(id, statType)
 	elseif statType == "Character" then
 		local parent = Ext.StatGetAttribute(id, "Using")
 		if parent == "_Ward" then
+			return false
+		elseif string.find(id, "Summon_", 1, true)
+		or string.find(id, "Slug", 1, true)
+		or string.find(id, "Env_", 1, true)
+		then
 			return false
 		end
 	end
