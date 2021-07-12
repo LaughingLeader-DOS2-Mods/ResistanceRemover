@@ -40,7 +40,8 @@ function StatsOverrider:CanOverridePotion(id)
 	if self.Ignored[id] then
 		return false
 	end
-	if Ext.StatGetAttribute(id, "IsConsumable") == "Yes" or Ext.StatGetAttribute(id, "IsFood") == "Yes" then
+	--Consumable items. May be a potion inheriting from _Story
+	if Ext.StatGetAttribute(id, "IsConsumable") == "Yes" or Ext.StatGetAttribute(id, "IsFood") == "Yes" or Ext.StatGetAttribute(id, "RootTemplate") ~= "" then
 		return false
 	end
 	return true
@@ -60,7 +61,6 @@ function StatsOverrider:OverridePotions(entries, syncStat)
 	local count = #overwrites
 	if count > 0 then
 		Ext.Print(string.format("[%s:OverridePotions] Changed resistances in (%s) stats.", self.PrintID, count))
-
 		local b,err = xpcall(function()
 			table.sort(overwrites)
 			local str = ""
@@ -69,6 +69,7 @@ function StatsOverrider:OverridePotions(entries, syncStat)
 			end
 			local fileName = string.format("Logs/ResistanceRemover_Overwrites_Potion_%s.txt", Ext.IsClient() and "Client" or "Server")
 			Ext.SaveFile(fileName, str)
+			Ext.Print(string.format("[%s:OverridePotions] Saved log to (%s).", self.PrintID, fileName))
 		end, debug.traceback)
 		if not b then
 			Ext.PrintError(err)
